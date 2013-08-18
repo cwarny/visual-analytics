@@ -1,0 +1,13 @@
+extends layout
+
+block content
+  h1= title
+  div.newtweets
+    form( method="post")
+      div
+        div
+          span.label Title :
+          input(type="text", name="q", id="searchQuery")
+        div#searchQuerySubmit
+          input(type="submit", value="Search")
+    a(href="/")!= "Back to tweet list"

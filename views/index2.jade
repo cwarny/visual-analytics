@@ -1,0 +1,30 @@
+extends layout
+
+block content
+	.content(style='font: 10px sans-serif; padding-top:25px; padding-bottom:25px; padding-right:50px; padding-left:50px;')
+		h3 Visualisation of tweets
+		h4 Demo for the SMA Group
+			.row-fluid
+				.remaining-graphs.span7
+					#dc-data-count
+						span.filter-count selected out of 
+						span.total-count records |
+						a(href="javascript:dc.filterAll(); dc.renderAll();") Reset All
+					.row-fluid
+						.bar-graph.span12#dc-volume-chart
+							h4 Tweet count
+					.row-fluid
+						.geo-map.span12#dc-us-chart
+							h4 Tweet Geolocalization
+				.remaining-graphs.span5
+					.row-fluid
+						.span8.table-graph
+							h4 Most popular hashtags
+								table.table.table-hover.dc-data-table#dc-table-graph
+									thead
+										tr.header
+											th Hashtag
+											th Count
+					.row-fluid
+						.bubble-graph.span12#dc-bubble-chart
+							h4 User characteristics (followers count by friends count - bubble size is level of activity - bubble number is average tweet length)
