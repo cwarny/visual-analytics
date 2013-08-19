@@ -4,14 +4,13 @@ var user = require('./routes/user');
 var http = require('http');
 var path = require('path');
 var TweetProvider = require('./tweetprovider').TweetProvider;
+var config = require('./config.json');
 
 var app = express();
 
 app.configure(function() {
     app.set('port', process.env.PORT || 8080);
     app.set('views', __dirname + '/views');
-    //app.engine('.html',require('jade').__express);
-    //app.engine('html',engines.mustache);
     app.set('view engine', 'jade');
     app.set('view options', {layout:false});
     app.use(express.favicon());
@@ -50,7 +49,7 @@ app.get('/tweets/fetch', function(req, res) {
 app.post('/tweets/fetch', function(req, res) {
 
     var tsession = require("temboo/core/temboosession");
-    var session = new tsession.TembooSession("cewarn", "myFirstApp", "9e3df035-e535-48d5-8");
+    var session = new tsession.TembooSession(config.temboo.username, config.temboo.app.name, config.temboo.app.key);
 
     var Twitter = require("temboo/Library/Twitter/Search");
 
